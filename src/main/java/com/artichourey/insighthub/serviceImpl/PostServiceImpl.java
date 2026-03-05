@@ -1,6 +1,8 @@
 package com.artichourey.insighthub.serviceImpl;
 
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,6 +32,7 @@ public class PostServiceImpl implements PostService{
 	private final UserRepository userRepository;
 	private final CategoryRepository categoryRepository;
 	private final PostMapper postMapper;
+	private static final int SUMMARY_LENGTH = 100;
 	
 
 	@Override
@@ -102,5 +105,28 @@ public class PostServiceImpl implements PostService{
 		
 	}
 
+	@Override
+	public List<PostResponseDto> getAllPostSummary() {
+
+	    log.info("Fetching all posts for summary view");
+
+	    List<PostResponseDto> postSummaries = postRepository.findAll()
+	            .stream()
+	            .map(post -> {
+
+	                PostResponseDto dto = postMapper.toDto(post);
+
+	                if (dto.getContent() != null && dto.getContent().length() > SUMMARY_LENGTH) {
+	                    dto.setContent(dto.getContent().substring(0, SUMMARY_LENGTH) + "...");
+	                }
+
+	                return dto;
+	            })
+	            .collect(Collectors.toList());
+
+	    log.info("Successfully generated summaries for {} posts", postSummaries.size());
+
+	    return postSummaries;
+	}
 
 }
