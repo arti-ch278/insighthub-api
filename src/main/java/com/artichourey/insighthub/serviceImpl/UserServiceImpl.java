@@ -3,6 +3,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.artichourey.insighthub.dtos.UserRequestDto;
@@ -18,17 +19,21 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
+
 public class UserServiceImpl implements UserService {
  
 	private final UserMapper userMapper;
 	
 	private final UserRepository userRepository;
 	
+	private final BCryptPasswordEncoder passwordEncoder;
 	
 	@Override
 	public UserResponseDto createUser(UserRequestDto dto) {
 		 log.info("Creating new user with email: {}", dto.getEmail());
 	      User user=userMapper.toEntity(dto);
+	      user.setId(null);
+	      user.setPassword(passwordEncoder.encode(dto.getPassword()));
 	     User savedUser= userRepository.save(user);
 	     log.info("User created successfully with id: {}", savedUser.getId());
 	     return userMapper.toDto(savedUser);
@@ -87,6 +92,12 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() ->
                         new ResourceNotFoundException("User not found with id: " + id));
     }
+
+	@Override
+	public UserResponseDto getUserByUserName(String name) {
+		User user=userRepository.findByName(name).orElseThrow(()-> new ResourceNotFoundException("user not found with this"+name));
+		return userMapper.toDto(user) ;
+	}
 	
 
 }
