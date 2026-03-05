@@ -1,5 +1,7 @@
 package com.artichourey.insighthub.controllers;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -66,6 +68,10 @@ public class PostController {
     public ResponseEntity<ApiResponse> deletePost(@PathVariable Long postId) {
         postService.deletePost(postId);
         return ResponseEntity.ok(new ApiResponse("Post deleted successfully", true));
+    }
+    @GetMapping("/summary")
+    public ResponseEntity<List<PostResponseDto>> getAllPostSummary(){
+    	return ResponseEntity.ok(postService.getAllPostSummary());
     }
 }
 
