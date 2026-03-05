@@ -1,5 +1,7 @@
 package com.artichourey.insighthub.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import com.artichourey.insighthub.dtos.PostRequestDto;
@@ -12,6 +14,7 @@ public interface PostService {
 	PostResponseDto getPostById(Long postId);
 	Page<PostResponseDto> getAllPosts(int pageNumber, int pageSize);
 	void deletePost(Long postId);
+	List<PostResponseDto> getAllPostSummary();
 	
 
 }
