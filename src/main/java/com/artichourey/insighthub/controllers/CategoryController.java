@@ -1,5 +1,7 @@
 package com.artichourey.insighthub.controllers;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -51,7 +53,7 @@ public class CategoryController {
         return ResponseEntity.ok(category);
     }
 
-    @GetMapping
+    @GetMapping("/")
     public ResponseEntity<Page<CategoryResponseDto>> getAllCategories(
             @RequestParam(defaultValue = "0") int pageNumber,
             @RequestParam(defaultValue = "10") int pageSize) {
@@ -66,6 +68,11 @@ public class CategoryController {
 
         categoryService.deleteCategory(categoryId);
         return ResponseEntity.ok(new ApiResponse("Category deleted successfully", true));
+    }
+    @GetMapping
+    public ResponseEntity<List<CategoryResponseDto>> getAllCategoriesNoPaging() {
+        List<CategoryResponseDto> categories = categoryService.getAllCategoriesNoPaging();
+        return ResponseEntity.ok(categories);
     }
 }
 
