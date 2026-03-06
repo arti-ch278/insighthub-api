@@ -1,5 +1,8 @@
 package com.artichourey.insighthub.serviceImpl;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -69,6 +72,16 @@ public class CategoryServiceImpl implements CategoryService {
 		categoryRepository.delete(category);
 		log.info("Category deleted successfully with id: {}", categoryId);
 
+	}
+
+	@Override
+	public List<CategoryResponseDto> getAllCategoriesNoPaging() {
+		log.info("Fetching all categories ");
+	    List<Category> categories = categoryRepository.findAll(Sort.by("categoryTitle").ascending());
+	    log.info("Fetched {} categories", categories.size());
+	    return categories.stream()
+	                     .map(categoryMapper::toDto)
+	                     .collect(Collectors.toList());
 	}
 
 }
