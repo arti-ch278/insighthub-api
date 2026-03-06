@@ -1,5 +1,7 @@
 package com.artichourey.insighthub.service;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 
 import com.artichourey.insighthub.dtos.CategoryRequestDto;
@@ -15,6 +17,8 @@ public interface CategoryService {
 	    CategoryResponseDto getCategoryById(Long categoryId);
 
 	    Page<CategoryResponseDto> getAllCategories(int pageNumber, int pageSize);
+	    
+	    List<CategoryResponseDto> getAllCategoriesNoPaging();
 
 	    void deleteCategory(Long categoryId);
 	}
