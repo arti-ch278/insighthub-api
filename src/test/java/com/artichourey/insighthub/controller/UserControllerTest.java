@@ -30,7 +30,7 @@ import com.artichourey.insighthub.security.JwtUtil;
 import com.artichourey.insighthub.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-//@ExtendWith(SpringExtension.class)
+
 @WebMvcTest(UserController.class)
 @AutoConfigureMockMvc(addFilters = false)
 class UserControllerTest {
@@ -117,7 +117,7 @@ class UserControllerTest {
 
         doNothing().when(userService).deleteUser(1L);
 
-        mockMvc.perform(delete("/api/users/{id}", 1L)  // ⭐ use path variable this way
+        mockMvc.perform(delete("/api/users/{id}", 1L)  
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 
