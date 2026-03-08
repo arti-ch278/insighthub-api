@@ -17,7 +17,7 @@ public class CommentMapper {
         if (comment == null) return null;
 
         CommentResponseDto dto = CommentResponseDto.builder()
-                //.id(comment.getId())
+                .id(comment.getId())
                 .content(comment.getContent())
                 .createdAt(comment.getCreatedAt())
                 .parentCommentId(comment.getParentComment() != null ? comment.getParentComment().getId() : null)
