@@ -54,7 +54,7 @@ export default function UserForm({ onSuccess }) {
         onChange={(e) => setUser({ ...user, about: e.target.value })}
       />
 
-      <button className="bg-blue-600 text-black px-4 py-2 rounded">
+      <button className="bg-blue-500 px-3 py-1 rounded text-white hover:bg-blue-600 cursor-pointer">
         Submit
       </button>
     </form>
