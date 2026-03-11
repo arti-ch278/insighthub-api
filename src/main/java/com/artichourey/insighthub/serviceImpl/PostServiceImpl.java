@@ -9,13 +9,12 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
 import com.artichourey.insighthub.dtos.PostRequestDto;
 import com.artichourey.insighthub.dtos.PostResponseDto;
 import com.artichourey.insighthub.entities.Category;
@@ -27,8 +26,6 @@ import com.artichourey.insighthub.repositories.CategoryRepository;
 import com.artichourey.insighthub.repositories.PostRepository;
 import com.artichourey.insighthub.repositories.UserRepository;
 import com.artichourey.insighthub.service.PostService;
-
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -63,14 +60,17 @@ public class PostServiceImpl implements PostService{
     }
 
 	@Override
-	public PostResponseDto updatePost(Long postId, PostRequestDto postRequestDto) {
+	public PostResponseDto updatePost(Long postId, PostRequestDto postRequestDto,String username) {
 		log.info("Updating post with postId: {}", postId);
 		Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new ResourceNotFoundException("Post is not found with this "+postId));
+		if (!post.getUser().getName().equals(username)) {   
+	        throw new AccessDeniedException("You cannot update this post");
+	    }
 
         post.setTitle(postRequestDto.getTitle());
         post.setContent(postRequestDto.getContent());
-        post.setImageName(postRequestDto.getImageName());
+        //post.setImageName(postRequestDto.getImageName());
 
         Post updatedPost = postRepository.save(post);
         log.info("Post updated successfully with postId: {}", postId);
@@ -92,22 +92,22 @@ public class PostServiceImpl implements PostService{
 	public Page<PostResponseDto> getAllPosts(int pageNumber, int pageSize) {
 		log.info("Fetching all posts - pageNumber: {}, pageSize: {}", pageNumber, pageSize);
 
-	    // Sort posts by addedDate descending (newest first)
 	    PageRequest pageRequest = PageRequest.of(pageNumber, pageSize, Sort.by("addedDate").descending());
-
-	    // Fetch paginated posts
+	    
 	    Page<Post> postsPage = postRepository.findAll(pageRequest);
 
-	    // Map Post entities to PostResponseDto
 	    log.info("Fetched {} posts on page {}", postsPage.getNumberOfElements(), pageNumber);
 	    return postsPage.map(postMapper::toDto);
 	}
 
 	@Override
-	public void deletePost(Long postId) {
+	public void deletePost(Long postId,String username) {
 		log.info("Deleting post with postId: {}", postId);
 		Post post = postRepository.findById(postId)
                 .orElseThrow(() -> new ResourceNotFoundException("Post"+postId));
+		if (!post.getUser().getName().equals(username)) {  // <-- use `user` instead of `author`
+	        throw new AccessDeniedException("You cannot delete this post");
+	    }
 
         postRepository.delete(post);
         log.info("Post deleted successfully with postId: {}", postId);

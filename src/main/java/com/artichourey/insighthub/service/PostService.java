@@ -14,10 +14,10 @@ import com.artichourey.insighthub.dtos.PostResponseDto;
 public interface PostService {
 	
 	PostResponseDto createPost (PostRequestDto postRequestDto, Long userId, Long categoryId);
-	PostResponseDto updatePost(Long postId, PostRequestDto postRequestDto);
+	PostResponseDto updatePost(Long postId, PostRequestDto postRequestDto,String username);
 	PostResponseDto getPostById(Long postId);
 	Page<PostResponseDto> getAllPosts(int pageNumber, int pageSize);
-	void deletePost(Long postId);
+	void deletePost(Long postId,String username);
 	List<PostResponseDto> getAllPostSummary();
 	PostResponseDto uploadImage(Long postId , MultipartFile file) throws IOException;
 	
