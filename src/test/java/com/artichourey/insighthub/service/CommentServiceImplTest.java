@@ -25,6 +25,7 @@ import com.artichourey.insighthub.exception.ResourceNotFoundException;
 import com.artichourey.insighthub.mapper.CommentMapper;
 import com.artichourey.insighthub.repositories.CommentRepository;
 import com.artichourey.insighthub.repositories.PostRepository;
+import com.artichourey.insighthub.repositories.UserRepository;
 import com.artichourey.insighthub.serviceImpl.CommentServiceImpl;
 
 @ExtendWith(MockitoExtension.class)
@@ -38,6 +39,9 @@ class CommentServiceImplTest {
 
     @Mock
     private CommentMapper commentMapper;
+    @Mock
+    private UserRepository userRepository;
+
 
     @InjectMocks
     private CommentServiceImpl commentService;
@@ -68,15 +72,18 @@ class CommentServiceImplTest {
 
     @Test
     void addComment_shouldReturnCommentResponseDto() {
+
+        when(userRepository.findByName("john")).thenReturn(Optional.of(user));
         when(postRepository.findById(1L)).thenReturn(Optional.of(post));
         when(commentMapper.toEntity(requestDto, user, post, null)).thenReturn(comment);
         when(commentRepository.save(comment)).thenReturn(comment);
         when(commentMapper.toDto(comment)).thenReturn(responseDto);
 
-        CommentResponseDto result = commentService.addComment(1L, requestDto, user);
+        CommentResponseDto result = commentService.addComment(1L, requestDto, "john");
 
         assertNotNull(result);
         assertEquals("Nice post!", result.getContent());
+
         verify(commentRepository).save(comment);
     }
 
@@ -95,14 +102,18 @@ class CommentServiceImplTest {
     void deleteComment_shouldCallRepositoryDelete() {
         when(commentRepository.findById(1L)).thenReturn(Optional.of(comment));
 
-        commentService.deleteComment(1L);
+        commentService.deleteComment(1L,"John");
 
         verify(commentRepository).delete(comment);
     }
 
     @Test
     void addComment_shouldThrowException_whenPostNotFound() {
+
+        when(userRepository.findByName("john")).thenReturn(Optional.of(user));
         when(postRepository.findById(1L)).thenReturn(Optional.empty());
-        assertThrows(ResourceNotFoundException.class, () -> commentService.addComment(1L, requestDto, user));
+
+        assertThrows(ResourceNotFoundException.class,
+                () -> commentService.addComment(1L, requestDto, "john"));
     }
 }

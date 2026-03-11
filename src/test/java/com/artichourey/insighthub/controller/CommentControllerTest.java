@@ -10,10 +10,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-
 import java.util.List;
-import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +19,6 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-
 import com.artichourey.insighthub.controllers.CommentController;
 import com.artichourey.insighthub.dtos.CommentRequestDto;
 import com.artichourey.insighthub.dtos.CommentResponseDto;
@@ -32,6 +28,7 @@ import com.artichourey.insighthub.security.JwtUtil;
 import com.artichourey.insighthub.service.CommentService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.test.context.support.WithMockUser;
+
 
 
 @WebMvcTest(CommentController.class)
@@ -73,10 +70,10 @@ class CommentControllerTest {
     }
 
     @Test
-    @WithMockUser(username = "John") 
+    @WithMockUser(username = "John")
     void addComment_shouldReturnCreatedComment() throws Exception {
-        when(userRepository.findByName("John")).thenReturn(Optional.of(user));
-        when(commentService.addComment(eq(1L), any(CommentRequestDto.class), eq(user)))
+
+        when(commentService.addComment(eq(1L), any(CommentRequestDto.class), eq("John")))
                 .thenReturn(responseDto);
 
         mockMvc.perform(post("/api/comments/{postId}", 1L)
@@ -97,14 +94,15 @@ class CommentControllerTest {
     }
 
     @Test
+    @WithMockUser(username = "John")
     void deleteComment_shouldReturnSuccessMessage() throws Exception {
-        doNothing().when(commentService).deleteComment(1L);
+        doNothing().when(commentService).deleteComment(1L, "John");
 
-        mockMvc.perform(delete("/api/comments/{postId}", 1L))
+        mockMvc.perform(delete("/api/comments/{commentId}", 1L))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true))
-                .andExpect(jsonPath("$.message").value("user deleted successfully"));
+                .andExpect(jsonPath("$.message").value("Comment deleted successfully"));
 
-        verify(commentService).deleteComment(1L);
+        verify(commentService).deleteComment(1L, "John");
     }
 }
