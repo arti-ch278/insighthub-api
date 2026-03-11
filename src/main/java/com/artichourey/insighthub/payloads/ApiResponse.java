@@ -11,6 +11,6 @@ public class ApiResponse {
 	
 	private String message;
 	
-	private boolean succuss;
+	private boolean success;
 
 }
