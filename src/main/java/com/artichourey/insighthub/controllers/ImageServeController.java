@@ -13,14 +13,18 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequiredArgsConstructor
+@Tag(name = "ImageServe API", description = "Serve images for posts")
 public class ImageServeController {
 
     private final String uploadDir = System.getProperty("user.dir") + "/uploads/posts/";
-
+    
+    @Operation(summary = "Serve the image for a post by image name")
     @GetMapping("/posts/images/{fileName}")
     public ResponseEntity<Resource> getImages(@PathVariable String fileName) throws IOException {
 
