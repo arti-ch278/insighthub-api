@@ -5,16 +5,13 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 import java.util.Optional;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-
 import com.artichourey.insighthub.dtos.PostRequestDto;
 import com.artichourey.insighthub.dtos.PostResponseDto;
 import com.artichourey.insighthub.entities.Category;
@@ -110,10 +107,12 @@ class PostServiceImplTest {
 
     @Test
     void deletePost_shouldCallRepositoryDelete() {
+        
+        User author = new User();
+        author.setName("testuser");
+        post.setUser(author);
         when(postRepository.findById(1L)).thenReturn(Optional.of(post));
-
-        postService.deletePost(1L);
-
+        postService.deletePost(1L, "testuser");
         verify(postRepository).delete(post);
     }
 }

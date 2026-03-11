@@ -10,6 +10,8 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import java.security.Principal;
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,13 +79,18 @@ class PostControllerTest {
 
     @Test
     void deletePost_shouldReturnSuccessMessage() throws Exception {
-        doNothing().when(postService).deletePost(1L);
+        
+        Principal principal = () -> "testuser";  // username of the logged-in user
 
-        mockMvc.perform(delete("/api/posts/{postId}", 1L))
+        
+        doNothing().when(postService).deletePost(1L, "testuser");
+
+        mockMvc.perform(delete("/api/posts/{postId}", 1L)
+                .principal(principal))  // pass the mocked logged-in user
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.success").value(true))
                 .andExpect(jsonPath("$.message").value("Post deleted successfully"));
 
-        verify(postService).deletePost(1L);
+        verify(postService).deletePost(1L, "testuser");
     }
 }
