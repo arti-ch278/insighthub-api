@@ -15,7 +15,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import com.artichourey.insighthub.dtos.UserRequestDto;
 import com.artichourey.insighthub.dtos.UserResponseDto;
@@ -25,80 +25,145 @@ import com.artichourey.insighthub.mapper.UserMapper;
 import com.artichourey.insighthub.repositories.UserRepository;
 import com.artichourey.insighthub.serviceImpl.UserServiceImpl;
 
-@ExtendWith(MockitoExtension.class) 
+@ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {
-	
-	    @Mock
-	    private UserRepository userRepository;
 
-	    @Mock
-	    private UserMapper userMapper;
+    @Mock
+    private UserRepository userRepository;
 
-	    @Mock
-	    private BCryptPasswordEncoder passwordEncoder;
+    @Mock
+    private UserMapper userMapper;
 
-	    @InjectMocks
-	    private UserServiceImpl userService;
+    @Mock
+    private PasswordEncoder passwordEncoder;
 
-	    private User user;
-	    private UserRequestDto requestDto;
-	    private UserResponseDto responseDto;
+    @InjectMocks
+    private UserServiceImpl userService;
 
-	    @BeforeEach
-	    void setUp() {
-	        requestDto = UserRequestDto.builder()
-	                .name("John")
-	                .email("john@test.com")
-	                .password("1234")
-	                .about("about")
-	                .build();
+    private User user;
+    private UserRequestDto requestDto;
+    private UserResponseDto responseDto;
 
-	        user = User.builder()
-	                .id(1L)
-	                .name("John")
-	                .email("john@test.com")
-	                .password("encoded")
-	                .about("about")
-	                .build();
+    @BeforeEach
+    void setUp() {
+        
+        requestDto = UserRequestDto.builder()
+                .name("John")
+                .email("john@test.com")
+                .password("1234")
+                .about("about")
+                .build();
 
-	        responseDto = UserResponseDto.builder()
-	                .id(1L)
-	                .name("John")
-	                .email("john@test.com")
-	                .about("about")
-	                .build();
-	    }
+        
+        user = User.builder()
+                .id(1L)
+                .name("John")
+                .email("john@test.com")
+                .password("encoded") 
+                .about("about")
+                .build();
 
-	    @Test
-	    void createUser_shouldReturnUserResponseDto() {
-	        when(userMapper.toEntity(requestDto)).thenReturn(user);
-	        when(passwordEncoder.encode("1234")).thenReturn("encoded");
-	        when(userRepository.save(any(User.class))).thenReturn(user);
-	        when(userMapper.toDto(user)).thenReturn(responseDto);
+        
+        responseDto = UserResponseDto.builder()
+                .id(1L)
+                .name("John")
+                .email("john@test.com")
+                .about("about")
+                .build();
+    }
 
-	        UserResponseDto result = userService.createUser(requestDto);
+    @Test
+    void createUser_shouldReturnUserResponseDto() {
+        
+        when(userMapper.toEntity(requestDto)).thenReturn(user);
+        when(passwordEncoder.encode("1234")).thenReturn("encoded");
+        when(userRepository.save(any(User.class))).thenReturn(user);
+        when(userMapper.toDto(user)).thenReturn(responseDto);
+        UserResponseDto result = userService.createUser(requestDto);
+        assertNotNull(result);
+        assertEquals("John", result.getName());
+        assertEquals("john@test.com", result.getEmail());
+        verify(userRepository).save(any(User.class));
+    }
 
-	        assertNotNull(result);
-	        assertEquals("John", result.getName());
-	        verify(userRepository).save(any(User.class));
-	    }
+    @Test
+    void getUserById_shouldReturnUserResponseDto_whenUserExists() {
 
-	    @Test
-	    void getUserById_shouldThrowException_whenUserNotFound() {
-	        when(userRepository.findById(1L)).thenReturn(Optional.empty());
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(userMapper.toDto(user)).thenReturn(responseDto);
 
-	        assertThrows(ResourceNotFoundException.class,
-	                () -> userService.getUserById(1L));
-	    }
+        UserResponseDto result = userService.getUserById(1L);
 
-	    @Test
-	    void deleteUser_shouldDeleteSuccessfully() {
-	        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        assertNotNull(result);
+        assertEquals("John", result.getName());
+        verify(userRepository).findById(1L);
+    }
 
-	        userService.deleteUser(1L);
+    @Test
+    void getUserById_shouldThrowException_whenUserNotFound() {
+        when(userRepository.findById(1L)).thenReturn(Optional.empty());
 
-	        verify(userRepository).delete(user);
-	    }
-	}
+        assertThrows(ResourceNotFoundException.class,
+                () -> userService.getUserById(1L));
 
+        verify(userRepository).findById(1L);
+    }
+
+    @Test
+    void updateUser_shouldEncodePasswordAndReturnDto() {
+        
+        UserRequestDto updateDto = UserRequestDto.builder()
+                .name("John Updated")
+                .email("johnupdated@test.com")
+                .password("5678")
+                .about("updated about")
+                .build();
+
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+        when(passwordEncoder.encode("5678")).thenReturn("encoded5678");
+        when(userRepository.save(user)).thenReturn(user);
+        when(userMapper.toDto(user)).thenReturn(responseDto);
+
+        
+        UserResponseDto result = userService.updateUser(updateDto, 1L);
+
+       
+        assertNotNull(result);
+        verify(passwordEncoder).encode("5678");
+        verify(userRepository).save(user);
+    }
+
+    @Test
+    void deleteUser_shouldDeleteSuccessfully() {
+        
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+
+        userService.deleteUser(1L);
+
+        verify(userRepository).delete(user);
+    }
+
+    @Test
+    void getUserByUserName_shouldReturnDto_whenUserExists() {
+        
+        when(userRepository.findByName("John")).thenReturn(Optional.of(user));
+        when(userMapper.toDto(user)).thenReturn(responseDto);
+
+        UserResponseDto result = userService.getUserByUserName("John");
+
+        assertNotNull(result);
+        assertEquals("John", result.getName());
+        verify(userRepository).findByName("John");
+    }
+
+    @Test
+    void getUserByUserName_shouldThrowException_whenUserNotFound() {
+        when(userRepository.findByName("John")).thenReturn(Optional.empty());
+
+        assertThrows(ResourceNotFoundException.class,
+                () -> userService.getUserByUserName("John"));
+
+        verify(userRepository).findByName("John");
+    }
+}
 
