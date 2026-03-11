@@ -32,7 +32,7 @@ class PostRepositoryTest {
 
     @BeforeEach
     void setup() {
-        user = new User(); // minimal user setup
+        user = new User(); 
         user.setName("John");
         user.setEmail("john@test.com");
         user.setPassword("123456");
