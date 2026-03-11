@@ -42,7 +42,15 @@ public class SecurityConfig {
 		.cors(cors->{})
 		.sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 		.authorizeHttpRequests(auth->auth.requestMatchers("/api/auth/**","/api/users/**").permitAll()
-				.requestMatchers("/h2-console/**").permitAll()
+				//.requestMatchers("/h2-console/**").permitAll()
+				.requestMatchers(
+						"/api/auth/**",
+				        "/api/users/**",
+				        "/h2-console/**",
+				        "/v3/api-docs/**",
+				        "/swagger-ui/**",
+				        "/swagger-ui.html"
+					).permitAll()
 				.requestMatchers(HttpMethod.GET,"/api/comments/**","/posts/images/**").permitAll()
 				.requestMatchers("/api/posts/**").authenticated()
 				.anyRequest().authenticated());
