@@ -15,6 +15,15 @@ export default function UserForm({ onSuccess }) {
     try {
       await createUser(user);
       alert("User created");
+
+      // clear form
+      setUser({
+        name: "",
+        email: "",
+        password: "",
+        about: ""
+      });
+
       onSuccess();
     } catch (err) {
       alert("Failed to create user");
@@ -29,6 +38,7 @@ export default function UserForm({ onSuccess }) {
       <input
         type="text"
         placeholder="Name"
+        value={user.name}
         className="border p-2 w-full mb-2"
         onChange={(e) => setUser({ ...user, name: e.target.value })}
       />
@@ -36,6 +46,7 @@ export default function UserForm({ onSuccess }) {
       <input
         type="email"
         placeholder="Email"
+        value={user.email}
         className="border p-2 w-full mb-2"
         onChange={(e) => setUser({ ...user, email: e.target.value })}
       />
@@ -43,6 +54,7 @@ export default function UserForm({ onSuccess }) {
       <input
         type="password"
         placeholder="Password"
+        value={user.password}
         className="border p-2 w-full mb-2"
         onChange={(e) => setUser({ ...user, password: e.target.value })}
       />
@@ -50,6 +62,7 @@ export default function UserForm({ onSuccess }) {
       <input
         type="text"
         placeholder="About"
+        value={user.about}
         className="border p-2 w-full mb-2"
         onChange={(e) => setUser({ ...user, about: e.target.value })}
       />
