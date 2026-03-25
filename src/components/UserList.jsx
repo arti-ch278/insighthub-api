@@ -10,8 +10,10 @@ export default function UserList({ reload }) {
       console.log("USERS RESPONSE:", res.data);
 
       // Extract array safely
-      const users = Array.isArray(res.data.content) ? res.data.content : [];
+      //const users = Array.isArray(res.data.content) ? res.data.content : [];
+      const users = Array.isArray(res.data) ? res.data : [];
       setUserList(users);
+      console.log("RAW USERS DATA:", res.data.content);
 
     } catch (err) {
       console.error("Error loading users:", err);
@@ -23,10 +25,10 @@ export default function UserList({ reload }) {
     loadUsers();
   }, [reload]);
 
-  const handleDelete = async (id) => {
+  {/*const handleDelete = async (id) => {
     await deleteUser(id);
     loadUsers();
-  };
+  };  */}
 
   return (
     <div className="p-4">
@@ -34,14 +36,13 @@ export default function UserList({ reload }) {
 
       {userList.map((u) => (
         <div key={u.id} className="flex justify-between border p-2 mb-2">
-          <span>{u.userName} - {u.email}</span>
-
-          <button
+          <span>{u.name} - {u.email}</span>
+        {/*  <button
             onClick={() => handleDelete(u.id)}
             className="bg-red-500 px-3 py-1 rounded text-white hover:bg-red-600 cursor-pointer"
           >
             Delete
-          </button>
+          </button>  */}
         </div>
       ))}
 
