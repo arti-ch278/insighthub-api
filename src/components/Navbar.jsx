@@ -11,7 +11,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="flex justify-between items-center px-6 py-3 bg-gray-800 text-white">
+    <nav className="flex flex-wrap justify-between items-center px-6 py-3 bg-gray-800 text-white">
       <Link to="/" className="text-2xl font-bold">My Blog</Link>
       <div className="flex items-center gap-4">
         <Link to="/posts" className="hover:text-yellow-400">All Posts</Link>
