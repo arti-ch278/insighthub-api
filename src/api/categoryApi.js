@@ -15,7 +15,7 @@ export const getCategoryById = (categoryId) =>
 
 // Get all categories (paginated)
 export const getCategories = (pageNumber = 0, pageSize = 10) =>
-  api4.get(`?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+  api4.get(`/paged?pageNumber=${pageNumber}&pageSize=${pageSize}`);
 
 // Get all categories (no paging) – for Create Post dropdown
 export const getAllCategories = () => api4.get(""); 
