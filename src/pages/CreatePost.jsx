@@ -9,6 +9,7 @@ import attachTokenToApi from "../api/axiosconfig";
 export default function CreatePost() {
   const [categories, setCategories] = useState([]);
   const [categoryId, setCategoryId] = useState("");
+  const [imagePreview, setImagePreview] = useState(null); // for preview
   const { user: currentUser, token } = useAuth();
   const navigate = useNavigate();
 
@@ -31,7 +32,6 @@ export default function CreatePost() {
         console.error("Error fetching categories:", err);
       }
     };
-
     fetchCategories();
   }, []);
 
@@ -59,9 +59,9 @@ export default function CreatePost() {
 
       const postId = createdPost.data.postId;
 
-      // Upload image
+      // Upload image if provided
       if (image) {
-        await uploadPostImage(postId, image); 
+        await uploadPostImage(postId, image);
       }
 
       alert("Post created successfully!");
@@ -72,16 +72,35 @@ export default function CreatePost() {
     }
   };
 
-  return (
-    <div className="max-w-2xl mx-auto mt-10 p-6 bg-white shadow rounded">
-      <h2 className="text-2xl font-bold mb-6">Create Post</h2>
+  // Handle image preview
+  const handleImageChange = (file) => {
+    if (file) {
+      setImagePreview(URL.createObjectURL(file));
+    } else {
+      setImagePreview(null);
+    }
+  };
 
-      <PostForm
-        onSubmit={handleCreate}
-        categories={categories}
-        categoryId={categoryId}
-        setCategoryId={setCategoryId}
+  return (
+    <div className="w-full flex justify-center">
+  <div className="w-full max-w-2xl">
+    <h2 className="text-2xl font-bold mb-6">Create Post</h2>
+
+    {imagePreview && (
+      <img
+        src={imagePreview}
+        alt="Preview"
+        className="w-full max-h-[200px] mb-4 object-cover rounded"
       />
-    </div>
+    )}
+
+    <PostForm
+      onSubmit={handleCreate}
+      categories={categories}
+      categoryId={categoryId}
+      setCategoryId={setCategoryId}
+    />
+  </div>
+</div>
   );
 }
