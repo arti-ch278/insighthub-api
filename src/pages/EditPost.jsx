@@ -1,67 +1,93 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { getPostById, updatePost } from "../api/postApi";
+import { getPostById, updatePost, uploadPostImage } from "../api/postApi";
+import { getAllCategories } from "../api/categoryApi";
+import PostForm from "../components/PostForm";
 
 export default function EditPost() {
+
   const { id } = useParams();
   const navigate = useNavigate();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+
+  const [post, setPost] = useState(null);
+  const [categories, setCategories] = useState([]);
+  const [categoryId, setCategoryId] = useState("");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const loadPost = async () => {
+    const loadData = async () => {
       try {
-        const res = await getPostById(id);
-        setTitle(res.data.title);
-        setContent(res.data.content);
+
+        const postRes = await getPostById(id);
+        const catRes = await getAllCategories();
+
+        setPost(postRes.data);
+        setCategories(catRes.data);
+
+        // set current category
+        setCategoryId(String(postRes.data.categoryId));
+
       } catch (err) {
-        console.error(err);
+        console.error("Error loading data:", err);
       } finally {
         setLoading(false);
       }
     };
-    loadPost();
+
+    loadData();
   }, [id]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async ({ title, content, image }) => {
+
     try {
-      await updatePost({ title, content }, id);
+
+      // update title + content + category
+      await updatePost(
+        {
+          title,
+          content,
+          categoryId
+        },
+        id
+      );
+
+      // upload image if selected
+      if (image) {
+        await uploadPostImage(id, image);
+      }
+
       alert("Post updated successfully!");
-      navigate(`/posts/${id}`); // back to post details
+      navigate(`/posts/${id}`);
+
     } catch (err) {
-      console.error(err);
+      console.error("Failed to update post:", err);
       alert("Failed to update post");
     }
   };
 
   if (loading) return <div>Loading...</div>;
+  if (!post) return <div>Post not found</div>;
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 shadow-lg rounded bg-white">
-      <h2 className="text-2xl font-bold mb-4">Edit Post</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <input
-          type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          className="w-full border p-2 rounded"
-          placeholder="Title"
-          required
-        />
-        <textarea
-          value={content}
-          onChange={(e) => setContent(e.target.value)}
-          className="w-full border p-2 rounded"
-          placeholder="Content"
-          rows={6}
-          required
-        />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
-          Update Post
-        </button>
-      </form>
-    </div>
+    <div className="w-full flex justify-center">
+  <div className="w-full max-w-2xl">
+
+    <h2 className="text-2xl font-bold mb-6">
+      Edit Post
+    </h2>
+
+    <PostForm
+      onSubmit={handleSubmit}
+      categories={categories}
+      categoryId={categoryId}
+      setCategoryId={setCategoryId}
+      initialTitle={post.title}
+      initialContent={post.content}
+      initialImageName={post.imageName}
+      isEdit={true}
+    />
+
+  </div>
+</div>
   );
 }
