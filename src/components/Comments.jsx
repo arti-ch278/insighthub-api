@@ -2,8 +2,17 @@ import { useEffect, useState } from "react";
 import CommentForm from "./CommentForm";
 import { getCommentByPostId, deleteComment } from "../api/commentApi";
 
+// helper to get current logged-in user
+const getCurrentUserId = () => {
+  const user = JSON.parse(localStorage.getItem("user"));
+  return user ? user.id : null;
+};
+
 const Comment = ({ comment, postId, onCommentAdded }) => {
   const [showReply, setShowReply] = useState(false);
+
+  // current logged-in user id
+  const currentUserId = getCurrentUserId();
 
   // Delete handler
   const handleDelete = async () => {
@@ -23,13 +32,17 @@ const Comment = ({ comment, postId, onCommentAdded }) => {
 
   return (
     <div className={`${comment.parentCommentId ? "ml-5" : "ml-0"} my-2`}>
+      
       {/* Comment content and actions */}
       <div className="flex items-center justify-between bg-gray-100 p-2 rounded">
-        <p className="font-semibold">
+
+        {/* break-all to prevent long text overflow */}
+        <p className="font-semibold break-all">
           {comment.username} : {comment.content}
         </p>
 
         <div className="flex gap-3">
+
           <button
             onClick={() => setShowReply(!showReply)}
             className="text-blue-500 text-sm hover:underline"
@@ -37,12 +50,16 @@ const Comment = ({ comment, postId, onCommentAdded }) => {
             Reply
           </button>
 
-          <button
-            onClick={handleDelete}
-            className="text-red-500 text-sm hover:underline"
-          >
-            Delete
-          </button>
+          {/*Only show delete if user is the comment owner */}
+          {currentUserId === comment.userId && (
+            <button
+              onClick={handleDelete}
+              className="text-red-500 text-sm hover:underline"
+            >
+              Delete
+            </button>
+          )}
+
         </div>
       </div>
 
@@ -57,7 +74,7 @@ const Comment = ({ comment, postId, onCommentAdded }) => {
 
       {/* Render replies recursively */}
       {comment.replies
-        ?.filter((reply) => reply.id) // ignore replies with missing id
+        ?.filter((reply) => reply.id)
         .map((reply) => (
           <Comment
             key={`reply-${reply.id}`}
@@ -76,10 +93,11 @@ const Comments = ({ postId }) => {
   const fetchComments = async () => {
     try {
       const res = await getCommentByPostId(postId);
-      // Only render top-level comments (parentCommentId = null)
+
       const topLevelComments = res.data.filter(
         (comment) => comment.parentCommentId === null
       );
+
       setComments(topLevelComments);
     } catch (err) {
       console.error("Error fetching comments:", err);
@@ -96,7 +114,7 @@ const Comments = ({ postId }) => {
 
       {comments.map((comment) => (
         <Comment
-          key={`comment-${comment.id}`} // unique key
+          key={`comment-${comment.id}`}
           comment={comment}
           postId={postId}
           onCommentAdded={fetchComments}
