@@ -1,10 +1,11 @@
 package com.artichourey.insighthub.dtos;
 
-import java.time.LocalDateTime;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,23 +19,14 @@ import lombok.Setter;
 @Builder
 public class CommentRequestDto {
 
-   
-
+    @Schema(description = "Comment content", example = "This is a very helpful post!")
     @NotBlank(message = "Content cannot be blank")
     private String content;
 
-    private LocalDateTime createdAt;
-
+    @Schema(description = "Parent comment ID (for replies)", example = "12")
     private Long parentCommentId;
 
-    //@NotNull(message = "Post ID is required")
+    @Schema(description = "ID of the post on which comment is made", example = "101")
     private Long postId;
-
-  //  @NotNull(message = "User ID is required")
-    private Long userId;
-
-    private String username; // optional, can be ignored on creation
-
-    private List<CommentRequestDto> replies = new ArrayList<>();
 }
 

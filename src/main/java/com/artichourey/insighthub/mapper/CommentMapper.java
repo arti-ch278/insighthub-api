@@ -1,5 +1,6 @@
 package com.artichourey.insighthub.mapper;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
@@ -20,13 +21,29 @@ public class CommentMapper {
                 .id(comment.getId())
                 .content(comment.getContent())
                 .createdAt(comment.getCreatedAt())
-                .parentCommentId(comment.getParentComment() != null ? comment.getParentComment().getId() : null)
-                .postId(comment.getPost() != null ? comment.getPost().getPostId() : null)
-                .userId(comment.getUser() != null ? comment.getUser().getId() : null)
-                .username(comment.getUser() != null ? comment.getUser().getName() : null)
+                .parentCommentId(
+                        comment.getParentComment() != null
+                                ? comment.getParentComment().getId()
+                                : null
+                )
+                .postId(
+                        comment.getPost() != null
+                                ? comment.getPost().getPostId()
+                                : null
+                )
+                .userId(
+                        comment.getUser() != null
+                                ? comment.getUser().getId()
+                                : null
+                )
+                .username(
+                        comment.getUser() != null
+                                ? comment.getUser().getName()
+                                : null
+                )
                 .build();
 
-        // Map replies recursively
+        //  Keep replies mapping (response side only)
         if (comment.getReplies() != null && !comment.getReplies().isEmpty()) {
             List<CommentResponseDto> replyDtos = comment.getReplies().stream()
                     .map(this::toDto)
@@ -37,27 +54,17 @@ public class CommentMapper {
         return dto;
     }
 
-    // Request DTO -> Entity
+    //  Request DTO -> Entity 
     public Comment toEntity(CommentRequestDto dto, User user, Post post, Comment parentComment) {
         if (dto == null) return null;
 
-        Comment comment = Comment.builder()
-                
+        return Comment.builder()
                 .content(dto.getContent())
-                .createdAt(dto.getCreatedAt() != null ? dto.getCreatedAt() : java.time.LocalDateTime.now())
+                .createdAt(LocalDateTime.now())
                 .user(user)
                 .post(post)
                 .parentComment(parentComment)
+
                 .build();
-
-        // Map replies recursively
-        if (dto.getReplies() != null && !dto.getReplies().isEmpty()) {
-            List<Comment> replyEntities = dto.getReplies().stream()
-                    .map(r -> toEntity(r, user, post, comment))
-                    .collect(Collectors.toList());
-            comment.setReplies(replyEntities);
-        }
-
-        return comment;
     }
 }
