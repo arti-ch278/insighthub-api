@@ -8,6 +8,7 @@ import AuthProvider from "./context/AuthContext";
 import PostDetails from "./pages/PostDetails";
 import EditPost from "./pages/EditPost";
 import Categories from "./pages/Categories";
+import Users from "./pages/Users";
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
         <div className="w-full max-w-4xl">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/users" element={<Users />} />
             <Route path="/posts" element={<Posts />} />
             <Route path="/create-post" element={<CreatePost />} />
             <Route path="/login" element={<Login />} />
