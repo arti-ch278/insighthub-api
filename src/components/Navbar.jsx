@@ -15,6 +15,9 @@ export default function Navbar() {
       <Link to="/" className="text-2xl font-bold">My Blog</Link>
       <div className="flex items-center gap-4">
         <Link to="/posts" className="hover:text-yellow-400">All Posts</Link>
+        <Link to="/users" className="hover:text-yellow-400">
+          Users
+        </Link>
 
         {isAuthenticated ? (
           <>
