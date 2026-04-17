@@ -1,4 +1,3 @@
-
 ############################
 # Maven / Build
 ############################
@@ -10,12 +9,15 @@ target/
 ############################
 # Spring Boot Secrets
 ############################
-application.yml
-application.properties
+# Ignore only environment-specific configs
 application-*.yml
 application-*.properties
 *.env
 .env
+
+# Allow base config files
+!application.yml
+!application.properties
 
 ############################
 # STS / Eclipse
@@ -52,4 +54,3 @@ build/
 # VS Code
 ############################
 .vscode/
-
