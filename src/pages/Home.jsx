@@ -1,17 +1,10 @@
-import { useState } from "react";
-import UserForm from "../components/UserForm";
-import UserList from "../components/UserList";
-
-
-function Home (){
-
-  const [reload,setReload] = useState(false);
-
+function Home() {
   return (
-    
-    <div className="grid grid-cols-2 gap-4 p-6">
-      <UserForm onSuccess={() => setReload(!reload)}></UserForm>
-      <UserList reload={reload} />
+    <div className="text-center p-10">
+      <h1 className="text-3xl font-bold">Welcome to InsightHub</h1>
+      <p className="mt-2 text-gray-600 font-bold">
+        InsightHub is a scalable full-stack blogging platform showcasing secure authentication, RESTful APIs, and seamless React integration.
+      </p>
     </div>
   );
 }
