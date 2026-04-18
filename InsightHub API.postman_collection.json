@@ -1,0 +1,2613 @@
+{
+  "info": {
+    "_postman_id": "e204d6bf-2425-47a4-9388-21a0019e7a5f",
+    "name": "InsightHub API",
+    "description": "REST APIs for InsightHub Blogging Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53134011",
+    "_collection_link": "https://go.postman.co/collection/53134011-e204d6bf-2425-47a4-9388-21a0019e7a5f?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "api",
+      "item": [
+        {
+          "name": "users",
+          "item": [
+            {
+              "name": "{userId}",
+              "item": [
+                {
+                  "name": "Get a user by user ID",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users/2",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users",
+                        "2"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"id\": 645,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"about\": \"string\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Update an existing user",
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"john@gmail.com\",\n  \"name\": \"john\",\n  \"password\": \"john123\",\n  \"about\": \"Full stack developer who enjoys writing about technology and programming as a hobby.\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users/1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"string\",\n  \"name\": \"string\",\n  \"password\": \"string\",\n  \"about\": \"strin\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"id\": 645,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"about\": \"string\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Delete a user by user ID",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users/5",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users",
+                        "5"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/users/:userId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "users",
+                            ":userId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "userId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"message\": \"string\",\n  \"success\": false\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Get all users with pagination1",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users/Paged?page=0&size=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users",
+                        "Paged"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/users/Paged?page=0&size=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "users",
+                            "Paged"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "key": "size",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*",
+                          "uuid": "52fc20ab-89d4-49bf-98b3-2cf890a8311c"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"totalElements\": 975,\n  \"totalPages\": 1525,\n  \"size\": 8657,\n  \"content\": [\n    {\n      \"id\": 8984,\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"about\": \"string\"\n    },\n    {\n      \"id\": 6510,\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"about\": \"string\"\n    }\n  ],\n  \"number\": 1815,\n  \"sort\": {\n    \"empty\": false,\n    \"sorted\": true,\n    \"unsorted\": false\n  },\n  \"first\": false,\n  \"last\": true,\n  \"numberOfElements\": 1657,\n  \"pageable\": {\n    \"offset\": 4038,\n    \"sort\": {\n      \"empty\": true,\n      \"sorted\": true,\n      \"unsorted\": true\n    },\n    \"pageNumber\": 4928,\n    \"paged\": false,\n    \"pageSize\": 3736,\n    \"unpaged\": true\n  },\n  \"empty\": true\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Get all users1",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "users"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*",
+                          "uuid": "52c4b471-b155-406e-b642-e8fdca0be16b"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"id\": 4786,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"about\": \"string\"\n  },\n  {\n    \"id\": 7858,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"about\": \"string\"\n  }\n]"
+                    }
+                  ]
+                },
+                {
+                  "name": "Get all users with pagination",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users/Paged?page=0&size=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users",
+                        "Paged"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/users/Paged?page=0&size=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "users",
+                            "Paged"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "key": "size",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*",
+                          "uuid": "52fc20ab-89d4-49bf-98b3-2cf890a8311c"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"totalElements\": 975,\n  \"totalPages\": 1525,\n  \"size\": 8657,\n  \"content\": [\n    {\n      \"id\": 8984,\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"about\": \"string\"\n    },\n    {\n      \"id\": 6510,\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"about\": \"string\"\n    }\n  ],\n  \"number\": 1815,\n  \"sort\": {\n    \"empty\": false,\n    \"sorted\": true,\n    \"unsorted\": false\n  },\n  \"first\": false,\n  \"last\": true,\n  \"numberOfElements\": 1657,\n  \"pageable\": {\n    \"offset\": 4038,\n    \"sort\": {\n      \"empty\": true,\n      \"sorted\": true,\n      \"unsorted\": true\n    },\n    \"pageNumber\": 4928,\n    \"paged\": false,\n    \"pageSize\": 3736,\n    \"unpaged\": true\n  },\n  \"empty\": true\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Get all users",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "users"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*",
+                          "uuid": "52c4b471-b155-406e-b642-e8fdca0be16b"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"id\": 4786,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"about\": \"string\"\n  },\n  {\n    \"id\": 7858,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"about\": \"string\"\n  }\n]"
+                    }
+                  ]
+                },
+                {
+                  "name": "Create a new user validation ",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n   \"email\": \"smily@gmail.com\",\n  \"name\": \"Smily\",\n  \"password\": \"smily123\",\n  \"about\": \"A developer who loves writing blogs about Java, Spring Boot, and web development and microservices\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"email\": \"string\",\n  \"name\": \"string\",\n  \"password\": \"string\",\n  \"about\": \"strin\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/users",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "users"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*",
+                          "uuid": "3729f42f-d8f1-4405-9c9b-58b2032fe8bc"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"id\": 645,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"about\": \"string\"\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Paged",
+              "item": [
+                {
+                  "name": "Get all users with pagination",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users/Paged?page=0&size=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users",
+                        "Paged"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/users/Paged?page=0&size=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "users",
+                            "Paged"
+                          ],
+                          "query": [
+                            {
+                              "key": "page",
+                              "value": "0"
+                            },
+                            {
+                              "key": "size",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"totalElements\": 975,\n  \"totalPages\": 1525,\n  \"size\": 8657,\n  \"content\": [\n    {\n      \"id\": 8984,\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"about\": \"string\"\n    },\n    {\n      \"id\": 6510,\n      \"name\": \"string\",\n      \"email\": \"string\",\n      \"about\": \"string\"\n    }\n  ],\n  \"number\": 1815,\n  \"sort\": {\n    \"empty\": false,\n    \"sorted\": true,\n    \"unsorted\": false\n  },\n  \"first\": false,\n  \"last\": true,\n  \"numberOfElements\": 1657,\n  \"pageable\": {\n    \"offset\": 4038,\n    \"sort\": {\n      \"empty\": true,\n      \"sorted\": true,\n      \"unsorted\": true\n    },\n    \"pageNumber\": 4928,\n    \"paged\": false,\n    \"pageSize\": 3736,\n    \"unpaged\": true\n  },\n  \"empty\": true\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get all users",
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"id\": 4786,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"about\": \"string\"\n  },\n  {\n    \"id\": 7858,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"about\": \"string\"\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "Create a new user",
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n   \"email\": \"honey@gmail.com\",\n  \"name\": \"Honey\",\n  \"password\": \"honey123\",\n  \"about\": \"A passionate blogger who loves writing about software development.\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/users",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "users"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"email\": \"string\",\n  \"name\": \"string\",\n  \"password\": \"string\",\n  \"about\": \"strin\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/users",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "users"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"id\": 645,\n  \"name\": \"string\",\n  \"email\": \"string\",\n  \"about\": \"string\"\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "posts",
+          "item": [
+            {
+              "name": "{postId}",
+              "item": [
+                {
+                  "name": "upload-image",
+                  "item": [
+                    {
+                      "name": "Upload an image for a post",
+                      "request": {
+                        "auth": {
+                          "type": "bearer",
+                          "bearer": [
+                            {
+                              "key": "token",
+                              "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW0iLCJpYXQiOjE3NzMzMDgyNjcsImV4cCI6MTc3MzMxMTg2N30.DmqgKMmBuSMLLGNLWS0DvmaK-FYCghqtQXC3jC0Vymp9ep1pkYtk0ZhkCo2DkRYHiscuH8Kzm79CxQKCuYeFUA",
+                              "type": "string"
+                            }
+                          ]
+                        },
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          }
+                        ],
+                        "body": {
+                          "mode": "formdata",
+                          "formdata": [
+                            {
+                              "key": "file",
+                              "type": "file",
+                              "uuid": "3d9a4e3a-3814-44f4-bcbd-ddb0eb6e03a6",
+                              "src": "/C:/Users/Admin/Desktop/images/react-beginners.jpg.jpg"
+                            }
+                          ]
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/posts/3/upload-image",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "posts",
+                            "3",
+                            "upload-image"
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "name": "OK",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "*/*"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"file\": \"string\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/api/posts/:postId/upload-image",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "api",
+                                "posts",
+                                ":postId",
+                                "upload-image"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "postId",
+                                  "value": "8249"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "*/*"
+                            }
+                          ],
+                          "cookie": [],
+                          "body": "{\n  \"postId\": 1454,\n  \"title\": \"string\",\n  \"content\": \"string\",\n  \"imageName\": \"string\",\n  \"addedDate\": \"1977-08-29T02:32:19.325Z\",\n  \"userId\": 1104,\n  \"categoryId\": 80,\n  \"categoryName\": \"string\",\n  \"authorName\": \"string\"\n}"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "name": "Get a post by post ID",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTaGFsZXkiLCJpYXQiOjE3NzMzMDQ0NDIsImV4cCI6MTc3MzMwODA0Mn0.PN_Lml7-kQ95H5EI-UwCMHZiK0pTYfiddsUn-JS4cLLhTRNHvufcm0hGf1rIsyKlKYUYMnN1ifCWKrv5mkenuQ",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/posts/1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "posts",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/posts/:postId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "posts",
+                            ":postId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "postId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"postId\": 1454,\n  \"title\": \"string\",\n  \"content\": \"string\",\n  \"imageName\": \"string\",\n  \"addedDate\": \"1977-08-29T02:32:19.325Z\",\n  \"userId\": 1104,\n  \"categoryId\": 80,\n  \"categoryName\": \"string\",\n  \"authorName\": \"string\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Update an existing post",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTaGFsZXkiLCJpYXQiOjE3NzMzMDQ0NDIsImV4cCI6MTc3MzMwODA0Mn0.PN_Lml7-kQ95H5EI-UwCMHZiK0pTYfiddsUn-JS4cLLhTRNHvufcm0hGf1rIsyKlKYUYMnN1ifCWKrv5mkenuQ",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"content\": \"Writing clean code makes your applications easier to maintain and scale. This article shares ten practical tips to improve your coding style.\",\n  \"title\": \"Top 10 Tips for Clean Code\",\n  \"imageName\": \"clean-code.jpg\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/posts/7",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "posts",
+                        "7"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"content\": \"string\",\n  \"title\": \"string\",\n  \"imageName\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/posts/:postId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "posts",
+                            ":postId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "postId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"postId\": 1454,\n  \"title\": \"string\",\n  \"content\": \"string\",\n  \"imageName\": \"string\",\n  \"addedDate\": \"1977-08-29T02:32:19.325Z\",\n  \"userId\": 1104,\n  \"categoryId\": 80,\n  \"categoryName\": \"string\",\n  \"authorName\": \"string\"\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Delete a post by post ID",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW0iLCJpYXQiOjE3NzMzMDgyNjcsImV4cCI6MTc3MzMxMTg2N30.DmqgKMmBuSMLLGNLWS0DvmaK-FYCghqtQXC3jC0Vymp9ep1pkYtk0ZhkCo2DkRYHiscuH8Kzm79CxQKCuYeFUA",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/posts/5",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "posts",
+                        "5"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/posts/:postId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "posts",
+                            ":postId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "postId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"message\": \"string\",\n  \"success\": false\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "user",
+              "item": [
+                {
+                  "name": "{userId}",
+                  "item": [
+                    {
+                      "name": "category",
+                      "item": [
+                        {
+                          "name": "{categoryId}",
+                          "item": [
+                            {
+                              "name": "Create a new post",
+                              "request": {
+                                "auth": {
+                                  "type": "bearer",
+                                  "bearer": [
+                                    {
+                                      "key": "token",
+                                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTaGFsZXkiLCJpYXQiOjE3NzMzMDQ0NDIsImV4cCI6MTc3MzMwODA0Mn0.PN_Lml7-kQ95H5EI-UwCMHZiK0pTYfiddsUn-JS4cLLhTRNHvufcm0hGf1rIsyKlKYUYMnN1ifCWKrv5mkenuQ",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "POST",
+                                "header": [
+                                  {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "key": "Accept",
+                                    "value": "*/*"
+                                  }
+                                ],
+                                "body": {
+                                  "mode": "raw",
+                                  "raw": "{\n  \"content\": \"REST APIs allow different applications to communicate over HTTP. This article explains REST principles, HTTP methods, and how APIs are used in modern applications.\",\n  \"title\": \"Understanding REST APIs in Web Development\",\n  \"imageName\": \"rest-api-concept.jpg\"\n}",
+                                  "options": {
+                                    "raw": {
+                                      "headerFamily": "json",
+                                      "language": "json"
+                                    }
+                                  }
+                                },
+                                "url": {
+                                  "raw": "{{baseUrl}}/api/posts/user/1/category/1",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "api",
+                                    "posts",
+                                    "user",
+                                    "1",
+                                    "category",
+                                    "1"
+                                  ]
+                                }
+                              },
+                              "response": [
+                                {
+                                  "name": "OK",
+                                  "originalRequest": {
+                                    "method": "POST",
+                                    "header": [
+                                      {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "key": "Accept",
+                                        "value": "*/*"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                      }
+                                    ],
+                                    "body": {
+                                      "mode": "raw",
+                                      "raw": "{\n  \"content\": \"string\",\n  \"title\": \"string\",\n  \"imageName\": \"string\"\n}",
+                                      "options": {
+                                        "raw": {
+                                          "headerFamily": "json",
+                                          "language": "json"
+                                        }
+                                      }
+                                    },
+                                    "url": {
+                                      "raw": "{{baseUrl}}/api/posts/user/:userId/category/:categoryId",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "api",
+                                        "posts",
+                                        "user",
+                                        ":userId",
+                                        "category",
+                                        ":categoryId"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "userId",
+                                          "value": "8249"
+                                        },
+                                        {
+                                          "key": "categoryId",
+                                          "value": "8249"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "*/*"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "body": "{\n  \"postId\": 1454,\n  \"title\": \"string\",\n  \"content\": \"string\",\n  \"imageName\": \"string\",\n  \"addedDate\": \"1977-08-29T02:32:19.325Z\",\n  \"userId\": 1104,\n  \"categoryId\": 80,\n  \"categoryName\": \"string\",\n  \"authorName\": \"string\"\n}"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "summary",
+              "item": [
+                {
+                  "name": "Get all posts summary",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/posts/summary",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "posts",
+                        "summary"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/posts/summary",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "posts",
+                            "summary"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"postId\": 2820,\n    \"title\": \"string\",\n    \"content\": \"string\",\n    \"imageName\": \"string\",\n    \"addedDate\": \"1959-09-28T08:09:48.372Z\",\n    \"userId\": 3985,\n    \"categoryId\": 7289,\n    \"categoryName\": \"string\",\n    \"authorName\": \"string\"\n  },\n  {\n    \"postId\": 4303,\n    \"title\": \"string\",\n    \"content\": \"string\",\n    \"imageName\": \"string\",\n    \"addedDate\": \"1987-11-26T06:31:28.268Z\",\n    \"userId\": 3533,\n    \"categoryId\": 7480,\n    \"categoryName\": \"string\",\n    \"authorName\": \"string\"\n  }\n]"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get all posts with pagination",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTaGFsZXkiLCJpYXQiOjE3NzMzMDQ0NDIsImV4cCI6MTc3MzMwODA0Mn0.PN_Lml7-kQ95H5EI-UwCMHZiK0pTYfiddsUn-JS4cLLhTRNHvufcm0hGf1rIsyKlKYUYMnN1ifCWKrv5mkenuQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/posts?page=0&size=10",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "posts"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "0"
+                    },
+                    {
+                      "key": "size",
+                      "value": "10"
+                    }
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/posts?page=0&size=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "posts"
+                      ],
+                      "query": [
+                        {
+                          "key": "page",
+                          "value": "0"
+                        },
+                        {
+                          "key": "size",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"totalElements\": 9536,\n  \"totalPages\": 6059,\n  \"size\": 9756,\n  \"content\": [\n    {\n      \"postId\": 7559,\n      \"title\": \"string\",\n      \"content\": \"string\",\n      \"imageName\": \"string\",\n      \"addedDate\": \"1993-11-10T01:09:13.492Z\",\n      \"userId\": 5963,\n      \"categoryId\": 7855,\n      \"categoryName\": \"string\",\n      \"authorName\": \"string\"\n    },\n    {\n      \"postId\": 3401,\n      \"title\": \"string\",\n      \"content\": \"string\",\n      \"imageName\": \"string\",\n      \"addedDate\": \"1966-05-02T04:15:01.926Z\",\n      \"userId\": 2392,\n      \"categoryId\": 5363,\n      \"categoryName\": \"string\",\n      \"authorName\": \"string\"\n    }\n  ],\n  \"number\": 4866,\n  \"sort\": {\n    \"empty\": true,\n    \"sorted\": false,\n    \"unsorted\": true\n  },\n  \"first\": false,\n  \"last\": true,\n  \"numberOfElements\": 1193,\n  \"pageable\": {\n    \"offset\": 2282,\n    \"sort\": {\n      \"empty\": true,\n      \"sorted\": false,\n      \"unsorted\": true\n    },\n    \"pageNumber\": 9865,\n    \"paged\": false,\n    \"pageSize\": 9941,\n    \"unpaged\": true\n  },\n  \"empty\": true\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "categories",
+          "item": [
+            {
+              "name": "{categoryId}",
+              "item": [
+                {
+                  "name": "Get a category by category ID",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTaGFsZXkiLCJpYXQiOjE3NzMzMDQ0NDIsImV4cCI6MTc3MzMwODA0Mn0.PN_Lml7-kQ95H5EI-UwCMHZiK0pTYfiddsUn-JS4cLLhTRNHvufcm0hGf1rIsyKlKYUYMnN1ifCWKrv5mkenuQ",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/categories/1",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "categories",
+                        "1"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/categories/:categoryId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "categories",
+                            ":categoryId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "categoryId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"categoryId\": 7827,\n  \"categoryTitle\": \"string\",\n  \"categoryDescription\": \"string\",\n  \"postCount\": 7276\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Update an existing category",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTaGFsZXkiLCJpYXQiOjE3NzMzMDQ0NDIsImV4cCI6MTc3MzMwODA0Mn0.PN_Lml7-kQ95H5EI-UwCMHZiK0pTYfiddsUn-JS4cLLhTRNHvufcm0hGf1rIsyKlKYUYMnN1ifCWKrv5mkenuQ",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"categoryTitle\": \"Developer Counsil\",\n  \"categoryDescription\": \"Guides and tips for becoming a better developer and building a career in tech.\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/categories/7",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "categories",
+                        "7"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"categoryTitle\": \"string\",\n  \"categoryDescription\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/categories/:categoryId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "categories",
+                            ":categoryId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "categoryId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"categoryId\": 7827,\n  \"categoryTitle\": \"string\",\n  \"categoryDescription\": \"string\",\n  \"postCount\": 7276\n}"
+                    }
+                  ]
+                },
+                {
+                  "name": "Delete a category by category ID",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTaGFsZXkiLCJpYXQiOjE3NzMzMDQ0NDIsImV4cCI6MTc3MzMwODA0Mn0.PN_Lml7-kQ95H5EI-UwCMHZiK0pTYfiddsUn-JS4cLLhTRNHvufcm0hGf1rIsyKlKYUYMnN1ifCWKrv5mkenuQ",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/categories/7",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "categories",
+                        "7"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/categories/:categoryId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "categories",
+                            ":categoryId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "categoryId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"message\": \"string\",\n  \"success\": false\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "paged",
+              "item": [
+                {
+                  "name": "Get all categories with pagination",
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/categories/paged?pageNumber=0&pageSize=10",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "categories",
+                        "paged"
+                      ],
+                      "query": [
+                        {
+                          "key": "pageNumber",
+                          "value": "0"
+                        },
+                        {
+                          "key": "pageSize",
+                          "value": "10"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/categories/paged?pageNumber=0&pageSize=10",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "categories",
+                            "paged"
+                          ],
+                          "query": [
+                            {
+                              "key": "pageNumber",
+                              "value": "0"
+                            },
+                            {
+                              "key": "pageSize",
+                              "value": "10"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"totalElements\": 1538,\n  \"totalPages\": 4221,\n  \"size\": 8200,\n  \"content\": [\n    {\n      \"categoryId\": 8356,\n      \"categoryTitle\": \"string\",\n      \"categoryDescription\": \"string\",\n      \"postCount\": 3374\n    },\n    {\n      \"categoryId\": 7607,\n      \"categoryTitle\": \"string\",\n      \"categoryDescription\": \"string\",\n      \"postCount\": 3869\n    }\n  ],\n  \"number\": 4004,\n  \"sort\": {\n    \"empty\": true,\n    \"sorted\": true,\n    \"unsorted\": true\n  },\n  \"first\": true,\n  \"last\": false,\n  \"numberOfElements\": 793,\n  \"pageable\": {\n    \"offset\": 9882,\n    \"sort\": {\n      \"empty\": false,\n      \"sorted\": false,\n      \"unsorted\": true\n    },\n    \"pageNumber\": 133,\n    \"paged\": true,\n    \"pageSize\": 4616,\n    \"unpaged\": false\n  },\n  \"empty\": false\n}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Get all categories without pagination",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTaGFsZXkiLCJpYXQiOjE3NzMzMDQ0NDIsImV4cCI6MTc3MzMwODA0Mn0.PN_Lml7-kQ95H5EI-UwCMHZiK0pTYfiddsUn-JS4cLLhTRNHvufcm0hGf1rIsyKlKYUYMnN1ifCWKrv5mkenuQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/api/categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "categories"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/categories",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "categories"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "[\n  {\n    \"categoryId\": 610,\n    \"categoryTitle\": \"string\",\n    \"categoryDescription\": \"string\",\n    \"postCount\": 289\n  },\n  {\n    \"categoryId\": 9730,\n    \"categoryTitle\": \"string\",\n    \"categoryDescription\": \"string\",\n    \"postCount\": 2652\n  }\n]"
+                }
+              ]
+            },
+            {
+              "name": "Create a new category",
+              "request": {
+                "auth": {
+                  "type": "bearer",
+                  "bearer": [
+                    {
+                      "key": "token",
+                      "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJTaGFsZXkiLCJpYXQiOjE3NzMzMDQ0NDIsImV4cCI6MTc3MzMwODA0Mn0.PN_Lml7-kQ95H5EI-UwCMHZiK0pTYfiddsUn-JS4cLLhTRNHvufcm0hGf1rIsyKlKYUYMnN1ifCWKrv5mkenuQ",
+                      "type": "string"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "*/*"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"categoryTitle\": \"Developer Career\",\n  \"categoryDescription\": \"Guides and tips for becoming a better developer and building a career in tech.\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/api/categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "api",
+                    "categories"
+                  ]
+                }
+              },
+              "response": [
+                {
+                  "name": "OK",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"categoryTitle\": \"string\",\n  \"categoryDescription\": \"string\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/categories",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "categories"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "*/*"
+                    }
+                  ],
+                  "cookie": [],
+                  "body": "{\n  \"categoryId\": 7827,\n  \"categoryTitle\": \"string\",\n  \"categoryDescription\": \"string\",\n  \"postCount\": 7276\n}"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "comments",
+          "item": [
+            {
+              "name": "{postId}",
+              "item": [
+                {
+                  "name": "Get comments by post ID",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW0iLCJpYXQiOjE3NzMzMDgyNjcsImV4cCI6MTc3MzMxMTg2N30.DmqgKMmBuSMLLGNLWS0DvmaK-FYCghqtQXC3jC0Vymp9ep1pkYtk0ZhkCo2DkRYHiscuH8Kzm79CxQKCuYeFUA",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/comments/4",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "comments",
+                        "4"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/comments/:postId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "comments",
+                            ":postId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "postId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "[\n  {\n    \"id\": 5711,\n    \"content\": \"string\",\n    \"createdAt\": \"1973-07-02T03:41:10.270Z\",\n    \"parentCommentId\": 168,\n    \"postId\": 3760,\n    \"userId\": 811,\n    \"username\": \"string\"\n  },\n  {\n    \"id\": 9956,\n    \"content\": \"string\",\n    \"createdAt\": \"1982-03-03T10:39:22.777Z\",\n    \"parentCommentId\": 2366,\n    \"postId\": 658,\n    \"userId\": 3265,\n    \"username\": \"string\"\n  }\n]"
+                    }
+                  ]
+                },
+                {
+                  "name": "Add a comment to a post",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"content\": \"string\",\n  \"createdAt\": \"1953-05-24T07:10:06.704Z\",\n  \"parentCommentId\": 1493,\n  \"postId\": 8424,\n  \"userId\": 4698,\n  \"username\": \"string\",\n  \"replies\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CommentRequestDto detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CommentRequestDto detected>\"\n    }\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/comments/:postId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "comments",
+                        ":postId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "postId",
+                          "value": "8249"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"content\": \"string\",\n  \"createdAt\": \"1953-05-24T07:10:06.704Z\",\n  \"parentCommentId\": 1493,\n  \"postId\": 8424,\n  \"userId\": 4698,\n  \"username\": \"string\",\n  \"replies\": [\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CommentRequestDto detected>\"\n    },\n    {\n      \"value\": \"<Circular reference to #/components/schemas/CommentRequestDto detected>\"\n    }\n  ]\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/comments/:postId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "comments",
+                            ":postId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "postId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{}"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "{commentId}",
+              "item": [
+                {
+                  "name": "Delete a comment by comment ID",
+                  "request": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/api/comments/:commentId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "comments",
+                        ":commentId"
+                      ],
+                      "variable": [
+                        {
+                          "key": "commentId",
+                          "value": "8249"
+                        }
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/api/comments/:commentId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "comments",
+                            ":commentId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "commentId",
+                              "value": "8249"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{\n  \"message\": \"string\",\n  \"success\": false\n}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "auth",
+          "item": [
+            {
+              "name": "login",
+              "item": [
+                {
+                  "name": "Login user by username and password",
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"username\": \"shaley\",\n  \"password\": \"shaley123\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/api/auth/login",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "api",
+                        "auth",
+                        "login"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"username\": \"string\",\n  \"password\": \"string\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/api/auth/login",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "api",
+                            "auth",
+                            "login"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "{}"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "posts",
+      "item": [
+        {
+          "name": "images",
+          "item": [
+            {
+              "name": "{fileName}",
+              "item": [
+                {
+                  "name": "Serve the image for a post by image name",
+                  "request": {
+                    "auth": {
+                      "type": "bearer",
+                      "bearer": [
+                        {
+                          "key": "token",
+                          "value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJzYW0iLCJpYXQiOjE3NzMzMDgyNjcsImV4cCI6MTc3MzMxMTg2N30.DmqgKMmBuSMLLGNLWS0DvmaK-FYCghqtQXC3jC0Vymp9ep1pkYtk0ZhkCo2DkRYHiscuH8Kzm79CxQKCuYeFUA",
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "*/*"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/posts/images/a4f29d99-64ac-43ff-ad8a-602381f0dd6f.jpg",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "posts",
+                        "images",
+                        "a4f29d99-64ac-43ff-ad8a-602381f0dd6f.jpg"
+                      ]
+                    }
+                  },
+                  "response": [
+                    {
+                      "name": "OK",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "*/*"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/posts/images/:fileName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "posts",
+                            "images",
+                            ":fileName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "fileName",
+                              "value": "string"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "*/*"
+                        }
+                      ],
+                      "cookie": [],
+                      "body": "string"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    }
+  ]
+}

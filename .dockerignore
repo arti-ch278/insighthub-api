@@ -1,0 +1,24 @@
+# Build output
+target/
+
+# Git
+.git
+.gitignore
+
+# Node (if any frontend inside project)
+node_modules/
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.idea
+.vscode
+*.iml
