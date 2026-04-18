@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -39,7 +41,8 @@ public class PostServiceImpl implements PostService{
 	private final CategoryRepository categoryRepository;
 	private final PostMapper postMapper;
 	private static final int SUMMARY_LENGTH = 100;
-	private final String uploadDir = System.getProperty("user.dir") + "/uploads/posts/";
+	@Value("${app.upload.dir}")
+	private String uploadDir;
 
 	@Override
 	public PostResponseDto createPost(PostRequestDto postRequestDto, Long userId, Long categoryId) {

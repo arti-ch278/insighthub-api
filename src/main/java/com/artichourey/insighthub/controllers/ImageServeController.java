@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.MediaType;
@@ -22,7 +23,8 @@ import lombok.RequiredArgsConstructor;
 @Tag(name = "ImageServe API", description = "Serve images for posts")
 public class ImageServeController {
 
-    private final String uploadDir = System.getProperty("user.dir") + "/uploads/posts/";
+	    @Value("${app.upload.dir}")
+	    private String uploadDir;
     
     @Operation(summary = "Serve the image for a post by image name")
     @GetMapping("/posts/images/{fileName}")
@@ -31,11 +33,14 @@ public class ImageServeController {
         Path path = Paths.get(uploadDir).resolve(fileName);
         Resource resource = new UrlResource(path.toUri());
 
-        if (!resource.exists()) {
+        if (!resource.exists() || !resource.isReadable()) {
             return ResponseEntity.notFound().build();
         }
 
         String contentType = Files.probeContentType(path);
+        if (contentType == null) {
+            contentType = MediaType.APPLICATION_OCTET_STREAM_VALUE;
+        }
 
         return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(contentType))
