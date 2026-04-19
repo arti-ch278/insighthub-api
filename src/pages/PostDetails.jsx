@@ -92,7 +92,7 @@ export default function PostDetails() {
       {/* Image */}
       {post.imageName && (
         <img
-          src={`http://localhost:8080${post.imageName}`}
+          src={`https://insighthub-api.onrender.com${post.imageName}`}
           alt={post.title}
           className="w-full max-h-[400px] object-cover rounded mb-6"
         />
