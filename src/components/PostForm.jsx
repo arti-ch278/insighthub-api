@@ -21,9 +21,9 @@ export default function PostForm({
     setTitle(initialTitle);
     setContent(initialContent);
 
-    if (initialImageName) {
-      setPreview(`http://localhost:8080${initialImageName}`);
-    }
+   if (initialImageName) {
+  setPreview(`https://insighthub-api.onrender.com${initialImageName}`);
+}
 
   }, [initialTitle, initialContent, initialImageName]);
 
