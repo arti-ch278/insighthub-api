@@ -215,7 +215,7 @@ Cloud deployment (Netlify + Render + Railway)
 
 # 📊 Architecture Diagram (Professional Version)
 
-Here is your **clean production-level architecture diagram**:
+ **clean production-level architecture diagram**
 
                 ┌────────────────────────────┐
                 │        USERS               │
