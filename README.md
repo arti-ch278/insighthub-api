@@ -67,11 +67,13 @@ This project was built to showcase **full-stack development skills**, including 
 - REST APIs
 
 ### Database
-- MySQL (Hosted on Railway)
+- MySQL-compatible database
+- TiDB Cloud
 
 ### Deployment
 - Frontend: Netlify
 - Backend: Render
+- Database: TiDB Cloud
 
 ---
 
@@ -113,8 +115,8 @@ You can:
                │ JDBC
                ▼
     ┌──────────────────────────┐
-    │   MySQL Database         │
-    │   (Railway)              │
+    │   TiDB Cloud Database    │
+    │     MySQL Compatible     │
     └──────────────────────────┘
 
 ---
@@ -141,7 +143,7 @@ Service Layer
 Repository Layer (JPA)
 │
 ▼
-MySQL Database (Railway)
+TiDB Cloud Database
 
 Response flows back → React UI updates dynamically
 
@@ -194,11 +196,15 @@ UPLOAD_DIR=uploads/posts
 
 ## 🧠 Key Learnings
 
-- Built full-stack CRUD application
-- Implemented JWT authentication
-- Managed CORS for cross-origin deployment
-- Integrated frontend with REST APIs
-- Deployed scalable applications using Netlify & Render
+Built a full-stack CRUD application
+Implemented JWT-based authentication
+Implemented ownership-based authorization
+Managed CORS for cross-origin deployment
+Integrated React frontend with Spring Boot REST APIs
+Integrated a MySQL-compatible TiDB Cloud database
+Implemented image upload functionality
+Documented APIs using Swagger
+Deployed the frontend and backend to cloud platforms
 
 👨‍💻 Author
 Developed by: ARTI CHOUREY
@@ -209,7 +215,7 @@ Full-stack architecture (React + Spring Boot)
 JWT authentication system
 Ownership-based authorization logic
 REST API integration
-Cloud deployment (Netlify + Render + Railway)
+Cloud deployment (Netlify + Render + TiDB Cloud Database)
 
 ---
 
@@ -241,7 +247,7 @@ Cloud deployment (Netlify + Render + Railway)
                     │ JDBC
                     ▼
     ┌────────────────────────────────────────────┐
-    │         MYSQL DATABASE (RAILWAY)           │
+    │         TiDB Cloud Database                │
     │   - Users Table                            │
     │   - Posts Table                            │
     │   - Comments Table                         │
